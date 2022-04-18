@@ -29,3 +29,5 @@ variable GOOGLE_CREDENTIALS in each workspace.
 
 click on the link to visit the fully deployed application
 https://finance.revevellidan.com
+
+Courtesy of: https://medium.com/@daphneyigwe/deploying-an-application-on-google-kubernetes-engine-with-a-cloud-sql-database-using-terraform-afaf11a072c1
