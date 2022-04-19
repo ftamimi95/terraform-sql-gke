@@ -35,9 +35,9 @@ resource "google_container_cluster" "terraform-test" {
   min_master_version = var.master_version
  
   // allows kubernetes service account authenticate as a google service account
-  workload_identity_config {
+  /* workload_identity_config {
     identity_namespace = "${var.project_id}.svc.id.goog"
-  }
+  } */
 }
 
 
