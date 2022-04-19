@@ -45,7 +45,7 @@ pipeline {
 // * db_user : the user to create for the instance
 // * db_pass : the password for the db_user
 // * database_name : the name of the databse to create in the instance.
-        stage('Terraform DB Plan') {
+        stage('Terraform DB Plan and Apply') {
             steps   {
                 script {
                     sh 'terraform --version'
@@ -57,6 +57,7 @@ pipeline {
                     --var 'db_user=feras'\
                     --var 'db_pass=admin'\
                     --var 'database_version=POSTGRES_13' && terraform -chdir=db apply --input=false --auto-approve tfplan '''
+                    
                 } 
             }
         }
@@ -76,21 +77,21 @@ pipeline {
 // * cluster_name : the name of the cluster you want to provision
 // * node_zones: list of the zones in which to provision the node. must be in the same region as the cluster.
         
-        stage('Terraform GKE cluster Plan') {
-            steps   {
-                script {
-                    sh 'terraform --version'
-                    sh 'terraform -chdir=gke-cluster init'
-                    sh '''terraform -chdir=gke-cluster validate && terraform -chdir=gke-cluster plan -out tfplan \
-                    --var 'project_id=astute-veld-344810' \
-                    --var 'region=us-central1'\
-                    --var 'cluster_name=terraform-test' \
-                    --var 'node_zones=us-central1-c' \
-                    --var 'zone=us-central1-c' && terraform -chdir=gke-cluster apply --input=false --auto-approve tfplan '''
+        // stage('Terraform GKE cluster Plan and Apply') {
+        //     steps   {
+        //         script {
+        //             sh 'terraform --version'
+        //             sh 'terraform -chdir=gke-cluster init'
+        //             sh '''terraform -chdir=gke-cluster validate && terraform -chdir=gke-cluster plan -out tfplan \
+        //             --var 'project_id=astute-veld-344810' \
+        //             --var 'region=us-central1'\
+        //             --var 'cluster_name=terraform-test' \
+        //             --var 'node_zones=us-central1-c' \
+        //             --var 'zone=us-central1-c' && terraform -chdir=gke-cluster apply --input=false --auto-approve tfplan '''
                     
-                } 
-            }
-        }
+        //         } 
+        //     }
+        // }
         // stage('Terraform GKE cluster Apply') {
         //     steps   {
         //         script {
@@ -107,7 +108,7 @@ pipeline {
 // * deployment_replica: the number of pods to deploy
 // * container_image: the application image
 // okteto/sample-app
-        stage('Terraform kubernetes app Plan') {
+        stage('Terraform kubernetes app Plan and Apply') {
             steps   {
                 script {
                     sh 'terraform --version'
