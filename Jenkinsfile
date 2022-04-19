@@ -56,7 +56,7 @@ pipeline {
                     --var 'region=us-central1'\
                     --var 'db_user=feras'\
                     --var 'db_pass=admin'\
-                    --var 'database_version=MYSQL_8_0' && terraform -chdir=db apply --input=false --auto-approve tfplan '''
+                    --var 'database_version=POSTGRES_13' && terraform -chdir=db apply --input=false --auto-approve tfplan '''
                 } 
             }
         }
