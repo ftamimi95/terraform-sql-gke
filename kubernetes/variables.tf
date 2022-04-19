@@ -17,10 +17,10 @@ variable "db_host" {
   description = "database host"
 }
 
-variable "api_key" {
+/* variable "api_key" {
   type        = string
   description = "credentials for accessing the iex api"
-}
+} */
 
 variable "deployment_replica" {
   type        = number
