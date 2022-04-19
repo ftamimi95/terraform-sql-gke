@@ -6,13 +6,13 @@ pipeline {
     tools {
         terraform 'terraform-1-1-7'
     }
-    parameters {
-        string(name: 'GCP_PROJECT_ID', defaultValue: 'astute-veld-344810', description: 'GCP Project ID',)
-        string(name: 'CLOUD_SQL_NAME', defaultValue: 'sql-db-test', description: 'Cloud SQL Instance name',)
-        string(name: 'GCP_REGION', defaultValue: 'us-central1', description: 'GCP Region',)
-        string(name: 'INSTANCE_TYPE', defaultValue: 'REGIONAL', description: 'Instance type or tier',)
-        string(name: 'GCP_ZONE', defaultValue: 'us-central1-a', description: 'Zone selection if needed',)
-    }
+    // parameters {
+    //     string(name: 'GCP_PROJECT_ID', defaultValue: 'astute-veld-344810', description: 'GCP Project ID',)
+    //     string(name: 'CLOUD_SQL_NAME', defaultValue: 'sql-db-test', description: 'Cloud SQL Instance name',)
+    //     string(name: 'GCP_REGION', defaultValue: 'us-central1', description: 'GCP Region',)
+    //     string(name: 'INSTANCE_TYPE', defaultValue: 'REGIONAL', description: 'Instance type or tier',)
+    //     string(name: 'GCP_ZONE', defaultValue: 'us-central1-a', description: 'Zone selection if needed',)
+    // }
     stages {
         
         stage('Clone Repo'){
