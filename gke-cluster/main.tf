@@ -35,6 +35,9 @@ resource "google_container_cluster" "terraform-test" {
   min_master_version = var.master_version
  
   // allows kubernetes service account authenticate as a google service account
+  # workload_identity_config {
+  #   identity_namespace = "${var.project_id}.svc.id.goog"
+  # }
 
 }
 
@@ -57,13 +60,11 @@ resource "google_container_node_pool" "default-pool" {
 
     //set the macchine type for the nodes in the node pool
     machine_type = var.machine_type
-    workload_identity_config {
-    identity_namespace = "${var.project_id}.svc.id.goog"
-  }
+    
     // enables workload identity on the nodes in the node pool
-    workload_metadata_config {
-      mode = "GKE_METADATA"  
-  }
+  #   workload_metadata_config {
+  #     mode = "GKE_METADATA"  
+  # }
 
   }
   // allow google to manage the health of the nodes
