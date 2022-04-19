@@ -45,22 +45,22 @@ pipeline {
 // * db_user : the user to create for the instance
 // * db_pass : the password for the db_user
 // * database_name : the name of the databse to create in the instance.
-        stage('Terraform DB Plan and Apply') {
-            steps   {
-                script {
-                    sh 'terraform --version'
-                    sh 'terraform -chdir=db init'
-                    sh '''terraform -chdir=db validate && terraform -chdir=db plan -out tfplan \
-                    --var 'project_id=astute-veld-344810' \
-                    --var 'database_name=sql-db-test-6' \
-                    --var 'region=us-central1'\
-                    --var 'db_user=feras'\
-                    --var 'db_pass=admin'\
-                    --var 'database_version=POSTGRES_13' && terraform -chdir=db apply --input=false --auto-approve tfplan '''
+        // stage('Terraform DB Plan and Apply') {
+        //     steps   {
+        //         script {
+        //             sh 'terraform --version'
+        //             sh 'terraform -chdir=db init'
+        //             sh '''terraform -chdir=db validate && terraform -chdir=db plan -out tfplan \
+        //             --var 'project_id=astute-veld-344810' \
+        //             --var 'database_name=sql-db-test-6' \
+        //             --var 'region=us-central1'\
+        //             --var 'db_user=feras'\
+        //             --var 'db_pass=admin'\
+        //             --var 'database_version=POSTGRES_13' && terraform -chdir=db apply --input=false --auto-approve tfplan '''
                     
-                } 
-            }
-        }
+        //         } 
+        //     }
+        // }
         // stage('Terraform DB Apply') {
         //     steps   {
         //         script {
