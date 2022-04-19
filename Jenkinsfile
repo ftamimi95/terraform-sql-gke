@@ -56,18 +56,18 @@ pipeline {
                     --var 'region=us-central1'\
                     --var 'db_user=feras'\
                     --var 'db_pass=admin'\
-                    --var 'database_version=MYSQL_8_0' '''
+                    --var 'database_version=MYSQL_8_0' && terraform apply --input=false --auto-approve tfplan '''
                 } 
             }
         }
-        stage('Terraform DB Apply') {
-            steps   {
-                script {
-                    sh 'terraform --version'
-                    sh 'terraform -chdir=db apply --input=false --auto-approve tfplan'
-                } 
-            }
-        }
+        // stage('Terraform DB Apply') {
+        //     steps   {
+        //         script {
+        //             sh 'terraform --version'
+        //             sh 'terraform -chdir=db apply --input=false --auto-approve tfplan'
+        //         } 
+        //     }
+        // }
 
 // ## Required Variables
 // * project_id: the project in which to provision the cluster
@@ -86,19 +86,19 @@ pipeline {
                     --var 'region=us-central1'\
                     --var 'cluster_name=terraform-test' \
                     --var 'node_zones=us-central1-c' \
-                    --var 'zone=us-central1-c' '''
+                    --var 'zone=us-central1-c' && terraform apply --input=false --auto-approve tfplan '''
                     
                 } 
             }
         }
-        stage('Terraform GKE cluster Apply') {
-            steps   {
-                script {
-                    sh 'terraform --version'
-                    sh 'terraform -chdir=gke-cluster apply --input=false --auto-approve tfplan'
-                } 
-            }
-        }
+        // stage('Terraform GKE cluster Apply') {
+        //     steps   {
+        //         script {
+        //             sh 'terraform --version'
+        //             sh 'terraform -chdir=gke-cluster apply --input=false --auto-approve tfplan'
+        //         } 
+        //     }
+        // }
 
 // ## Required Variables
 // * project_id : the google project the resources should be provisioned in
@@ -117,19 +117,19 @@ pipeline {
                     --var 'namespace=default' \
                     --var 'region=us-central1'\
                     --var 'deployment_replica=2' \
-                    --var 'container_image=okteto/sample-app' '''
+                    --var 'container_image=okteto/sample-app' && terraform apply --chdir=kubernetes --input=false --auto-approve tfplan'''
                 } 
             }
         }
-    stage('Terraform kubernetes app Apply') {
-            steps   {
-                script {
-                    sh 'terraform --version'
-                    sh 'terraform -chdir=kubernetes apply --chdir=kubernetes --input=false --auto-approve tfplan'
-                } 
-            }
-        }
-    }
+    // stage('Terraform kubernetes app Apply') {
+    //         steps   {
+    //             script {
+    //                 sh 'terraform --version'
+    //                 sh 'terraform -chdir=kubernetes apply --chdir=kubernetes --input=false --auto-approve tfplan'
+    //             } 
+    //         }
+    //     }
+    // }
     
     post {
         // Clean after build
