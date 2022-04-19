@@ -38,6 +38,10 @@ resource "google_container_cluster" "terraform-test" {
   workload_identity_config {
     identity_namespace = "${var.project_id}.svc.id.goog"
   }
+
+  workload_metadata_config {
+    node_metadata = "GKE_METADATA_SERVER"
+  }
 }
 
 
