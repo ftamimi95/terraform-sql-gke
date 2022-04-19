@@ -118,7 +118,7 @@ pipeline {
                     --var 'region=us-central1'\
                     --var 'deployment_replica=2' \
                     --var 'container_image=okteto/sample-app' \
-                    && terraform -chdir=kubernetes apply --chdir=kubernetes --input=false --auto-approve tfplan '''
+                    && terraform -chdir=kubernetes apply --input=false --auto-approve tfplan '''
                 } 
             }
         }
