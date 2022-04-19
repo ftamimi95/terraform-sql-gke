@@ -6,7 +6,7 @@ resource "google_container_cluster" "terraform-test" {
   name = random_pet.service_account.keepers.cluster_name
 
   // location of the control plane. zonal clusters have 1 replica of the control plane in a single zone.
-  # location = var.cluster_zone
+  location = var.cluster_zone
 
   // to use external node pool, i create and delete the default
   // node pool as i cant create the cluster without the default node pool
@@ -35,9 +35,9 @@ resource "google_container_cluster" "terraform-test" {
   min_master_version = var.master_version
  
   // allows kubernetes service account authenticate as a google service account
-  /* workload_identity_config {
+  workload_identity_config {
     identity_namespace = "${var.project_id}.svc.id.goog"
-  } */
+  }
 }
 
 
@@ -49,7 +49,7 @@ resource "google_container_node_pool" "default-pool" {
   cluster = random_pet.service_account.keepers.cluster_name
 
   // specify different zones within the same region as the control plane(ie zonal cluster)
-  # node_locations = var.node_zones
+  node_locations = var.node_zones
 
   node_config {
 
