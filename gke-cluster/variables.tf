@@ -43,6 +43,7 @@ variable "master_version" {
 
 variable "node_zones" {
   type = list(string)
+  default= "us-central1-c"
   description = "location of nodes in nodepool/cluster"
 }
 
