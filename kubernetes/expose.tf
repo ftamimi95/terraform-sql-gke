@@ -45,16 +45,16 @@ resource "kubernetes_ingress" "flask-ingress" {
     }
   }
   spec {
-    tls {
+    /* tls {
       secret_name = kubernetes_secret.tls_cred.metadata[0].name
-    }
+    } */
     backend {
       service_name = kubernetes_service.flask-service.metadata[0].name
       service_port = 5000
     }
   }
   depends_on = [
-    kubernetes_secret.tls_cred,
+    /* kubernetes_secret.tls_cred, */
     kubernetes_service.flask-service,
     kubernetes_manifest.frontendconfig
   ]
