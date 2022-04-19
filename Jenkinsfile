@@ -89,9 +89,9 @@ pipeline {
                     --var 'node_zones=us-central1-c' \
                     --var 'zone=us-central1-c' && terraform -chdir=gke-cluster apply --input=false --auto-approve tfplan '''
                     
-        //         } 
-        //     }
-        // }
+                } 
+            }
+        }
         // stage('Terraform GKE cluster Apply') {
         //     steps   {
         //         script {
