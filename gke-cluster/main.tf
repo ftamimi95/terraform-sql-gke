@@ -43,7 +43,7 @@ resource "google_container_cluster" "terraform-test" {
 
 
 // creates a muti zone node pool for the cluster
-resource "google_container_node_pool" "default-pool" {
+resource "google_container_node_pool" "default-node-pool" {
   name = "${random_pet.service_account.keepers.cluster_name}"
 
   // references the sca-cluster 
