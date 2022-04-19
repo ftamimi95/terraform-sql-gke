@@ -2,7 +2,7 @@
 
 
 // creates a public cluster with VPC-nativenetwork routing
-resource "google_container_cluster" "sca-cluster" {
+resource "google_container_cluster" "terraform-test" {
   name = random_pet.service_account.keepers.cluster_name
 
   // location of the control plane. zonal clusters have 1 replica of the control plane in a single zone.
@@ -42,7 +42,7 @@ resource "google_container_cluster" "sca-cluster" {
 
 
 // creates a muti zone node pool for the cluster
-resource "google_container_node_pool" "sca-node-pool" {
+resource "google_container_node_pool" "terraform-node-pool" {
   name = "${random_pet.service_account.keepers.cluster_name}"
 
   // references the sca-cluster 
