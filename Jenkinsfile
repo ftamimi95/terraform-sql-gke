@@ -50,13 +50,13 @@ pipeline {
                 script {
                     sh 'terraform --version'
                     sh 'terraform -chdir=db init'
-                    sh '''terraform -chdir=db validate && terraform plan -out tfplan \
+                    sh '''terraform -chdir=db validate && terraform -chdir=db plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
-                    --var 'database_name=sql-db-test-4' \
+                    --var 'database_name=sql-db-test-5' \
                     --var 'region=us-central1'\
                     --var 'db_user=feras'\
                     --var 'db_pass=admin'\
-                    --var 'database_version=MYSQL_8_0' && terraform apply --input=false --auto-approve tfplan '''
+                    --var 'database_version=MYSQL_8_0' && terraform -chdir=db apply --input=false --auto-approve tfplan '''
                 } 
             }
         }
@@ -81,12 +81,12 @@ pipeline {
                 script {
                     sh 'terraform --version'
                     sh 'terraform -chdir=gke-cluster init'
-                    sh '''terraform -chdir=gke-cluster validate && terraform plan -out tfplan \
+                    sh '''terraform -chdir=gke-cluster validate && terraform -chdir=gke-cluster plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
                     --var 'region=us-central1'\
                     --var 'cluster_name=terraform-test' \
                     --var 'node_zones=us-central1-c' \
-                    --var 'zone=us-central1-c' && terraform apply --input=false --auto-approve tfplan '''
+                    --var 'zone=us-central1-c' && terraform -chdir=gke-cluster apply --input=false --auto-approve tfplan '''
                     
                 } 
             }
@@ -112,12 +112,12 @@ pipeline {
                 script {
                     sh 'terraform --version'
                     sh 'terraform -chdir=kubernetes init'
-                    sh '''terraform -chdir=kubernetes validate && terraform plan -out tfplan \
+                    sh '''terraform -chdir=kubernetes validate && terraform -chdir=kubernetes plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
                     --var 'namespace=default' \
                     --var 'region=us-central1'\
                     --var 'deployment_replica=2' \
-                    --var 'container_image=okteto/sample-app' && terraform apply --chdir=kubernetes --input=false --auto-approve tfplan'''
+                    --var 'container_image=okteto/sample-app' && terraform -chdir=kubernetes apply --chdir=kubernetes --input=false --auto-approve tfplan'''
                 } 
             }
         }
