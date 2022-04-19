@@ -121,7 +121,6 @@ pipeline {
                 } 
             }
         }
-    }
     stage('Terraform kubernetes app Apply') {
             steps   {
                 script {
@@ -130,6 +129,8 @@ pipeline {
                 } 
             }
         }
+    }
+    
     post {
         // Clean after build
         always {
