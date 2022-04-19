@@ -14,16 +14,6 @@ terraform {
   }
 }
 
-terraform {
-  backend "remote" {
-    organization = "feras-tamimi"
-
-    workspaces {
-      name = "terraform-cluster"
-    }
-  }
-}
-
 provider "google" {
   project = var.project_id
   region = var.region

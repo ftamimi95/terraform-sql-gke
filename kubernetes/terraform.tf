@@ -16,7 +16,7 @@ terraform {
 }
 
 // configure remote backend as a terraform cloud workspace
-terraform {
+/* terraform {
   backend "remote" {
     organization = "feras-tamimi"
 
@@ -24,7 +24,7 @@ terraform {
       name = "terraform-cluster"
     }
   }
-}
+} */
 
 
 // configure providers

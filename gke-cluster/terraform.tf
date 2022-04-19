@@ -9,7 +9,7 @@ terraform {
 }
 
 // configure the terraform backend to use a workspace in terraform cloud
-terraform {
+/* terraform {
   backend "remote" {
     organization = "feras-tamimi"
 
@@ -17,7 +17,7 @@ terraform {
       name = "terraform-cluster"
     }
   }
-}
+} */
 
 // configure the providers
 // the google cloud credential is storeed as the environment variable GOOGLE_CREDENTIAL in the terraform workspace
