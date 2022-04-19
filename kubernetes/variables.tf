@@ -38,7 +38,7 @@ variable "roles" {
   description = "for authenticating the cloud sql proxy side car container"
 }
 
-variable "tls_crt" {
+/* variable "tls_crt" {
   type = string
   description = "tls certificate"
 }
@@ -46,4 +46,4 @@ variable "tls_crt" {
 variable "tls_key" {
   type = string
   description = "tls key"
-}
+} */
