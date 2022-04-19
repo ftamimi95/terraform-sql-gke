@@ -1,5 +1,5 @@
 // API token for IEX cloud
-resource "kubernetes_secret" "iex_cred" {
+/* resource "kubernetes_secret" "iex_cred" {
   metadata {
     name = "iex-cred"
     namespace = kubernetes_namespace.dev.metadata[0].name
@@ -7,7 +7,7 @@ resource "kubernetes_secret" "iex_cred" {
   data = {
     "token" = var.api_key
   }
-} 
+}  */
 
 //creates secret for the tls cert and key
 /* resource "kubernetes_secret" "tls_cred" {
