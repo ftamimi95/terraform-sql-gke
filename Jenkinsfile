@@ -112,12 +112,12 @@ pipeline {
                 script {
                     sh 'terraform --version'
                     sh 'terraform -chdir=kubernetes init'
-                    sh '''terraform -chdir=kubernetes validate && terraform -chdir=kubernetes plan -out tfplan \
+                    sh '''terraform -chdir=kubernetes plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
                     --var 'namespace=default' \
                     --var 'region=us-central1'\
                     --var 'deployment_replica=2' \
-                    --var 'container_image=okteto/sample-app' && terraform -chdir=kubernetes apply --chdir=kubernetes --input=false --auto-approve tfplan'''
+                    --var 'container_image=okteto/sample-app' && terraform -chdir=kubernetes apply --chdir=kubernetes --input=false --auto-approve tfplan '''
                 } 
             }
         }
