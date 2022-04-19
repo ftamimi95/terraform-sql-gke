@@ -10,7 +10,7 @@ variable "region" {
 }
 variable "availability" {
     type = string
-    default = "REGIONAL"
+    default = "ZONAL"
 }
 
 variable "tier" {
