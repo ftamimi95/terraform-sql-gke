@@ -76,6 +76,7 @@ pipeline {
 // * zone : the zone in which to provision the clluster
 // * cluster_name : the name of the cluster you want to provision
 // * node_zones: list of the zones in which to provision the node. must be in the same region as the cluster.
+// --var 'zone=us-central1-c' &&
         
         stage('Terraform GKE cluster Plan and Apply') {
             steps   {
@@ -85,8 +86,7 @@ pipeline {
                     sh '''terraform -chdir=gke-cluster validate && terraform -chdir=gke-cluster plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
                     --var 'region=us-central1'\
-                    --var 'cluster_name=terraform-test' \
-                    --var 'zone=us-central1-c' && terraform -chdir=gke-cluster apply --input=false --auto-approve tfplan '''
+                    --var 'cluster_name=terraform-test' && terraform -chdir=gke-cluster apply --input=false --auto-approve tfplan '''
                     
                 } 
             }
