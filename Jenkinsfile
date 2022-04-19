@@ -114,7 +114,7 @@ pipeline {
                     sh 'terraform -chdir=kubernetes init'
                     sh '''terraform -chdir=kubernetes plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
-                    --var 'namespace=default' \
+                    --var 'namespace=flask-test' \
                     --var 'region=us-central1'\
                     --var 'deployment_replica=2' \
                     --var 'container_image=okteto/sample-app' \
