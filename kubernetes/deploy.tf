@@ -51,7 +51,7 @@ resource "kubernetes_deployment" "test-project-depl" {
                 value = data.google_storage_bucket_object_content.db.content
 
             }
-            env {
+            /* env {
                 name = "API_KEY"
                 value_from {
                   secret_key_ref {
@@ -59,7 +59,7 @@ resource "kubernetes_deployment" "test-project-depl" {
                     key  = "token"
                   }
                 } 
-              }
+              } */
          }
         container {  
             name = "cloud-sql-proxy"
