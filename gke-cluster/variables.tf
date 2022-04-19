@@ -48,7 +48,7 @@ variable "node_zones" {
 
 variable "machine_type" {
   type = string
-  default = "g1-small"
+  default = "e2-medium"
   description = "type of nodes in node pool"
 
 }

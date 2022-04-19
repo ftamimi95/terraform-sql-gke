@@ -39,6 +39,12 @@ pipeline {
         //     }
         // }
         
+// ## Required Variables
+// * project_id: the google cloud project in which to provision the instance.
+// * region : the region in which to provision the instance
+// * db_user : the user to create for the instance
+// * db_pass : the password for the db_user
+// * database_name : the name of the databse to create in the instance.
         stage('Terraform DB Plan') {
             steps   {
                 script {
@@ -46,10 +52,10 @@ pipeline {
                     sh 'terraform -chdir=db init'
                     sh '''terraform -chdir=db validate && terraform plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
-                    --var 'name=sql-db-test-4' \
-                    --var 'region=us-east1'\
-                    --var 'disk_size=10' \
-                    --var 'zone=us-east1-b' \
+                    --var 'database_name=sql-db-test-4' \
+                    --var 'region=us-central1'\
+                    --var 'db_user=feras'\
+                    --var 'db_pass=admin'\
                     --var 'database_version=MYSQL_8_0' '''
                 } 
             }
@@ -62,6 +68,14 @@ pipeline {
                 } 
             }
         }
+
+// ## Required Variables
+// * project_id: the project in which to provision the cluster
+// * region: the region in which to provision the cluster
+// * zone : the zone in which to provision the clluster
+// * cluster_name : the name of the cluster you want to provision
+// * node_zones: list of the zones in which to provision the node. must be in the same region as the cluster.
+        
         stage('Terraform GKE cluster Plan') {
             steps   {
                 script {
@@ -69,11 +83,10 @@ pipeline {
                     sh 'terraform -chdir=gke-cluster init'
                     sh '''terraform -chdir=gke-cluster validate && terraform plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
-                    --var 'name=sql-db-test-4' \
-                    --var 'region=us-east1'\
-                    --var 'disk_size=10' \
-                    --var 'zone=us-east1-b' \
-                    --var 'database_version=MYSQL_8_0' '''
+                    --var 'region=us-central1'\
+                    --var 'cluster_name=terraform-test' \
+                    --var 'node_zones=us-central1-c' \
+                    --var 'zone=us-central1-c' '''
                     
                 } 
             }
@@ -86,6 +99,14 @@ pipeline {
                 } 
             }
         }
+
+// ## Required Variables
+// * project_id : the google project the resources should be provisioned in
+// * region: the region in which to provision the resources
+// * namespace: the kubernetes namespace inwhich to create the kubernetes objects.
+// * deployment_replica: the number of pods to deploy
+// * container_image: the application image
+// okteto/sample-app
         stage('Terraform kubernetes app Plan') {
             steps   {
                 script {
@@ -93,11 +114,10 @@ pipeline {
                     sh 'terraform -chdir=kubernetes init'
                     sh '''terraform -chdir=kubernetes validate && terraform plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
-                    --var 'name=sql-db-test-4' \
-                    --var 'region=us-east1'\
-                    --var 'disk_size=10' \
-                    --var 'zone=us-east1-b' \
-                    --var 'database_version=MYSQL_8_0' '''
+                    --var 'namespace=default' \
+                    --var 'region=us-central1'\
+                    --var 'deployment_replica=2' \
+                    --var 'container_image=okteto/sample-app' '''
                 } 
             }
         }

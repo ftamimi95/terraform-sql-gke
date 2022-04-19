@@ -1,6 +1,5 @@
 variable "database_version" {
     type = string
-    default = "MYSQL_8_0"
     description  = "type of database and version"
   
 }
@@ -11,7 +10,7 @@ variable "region" {
 }
 variable "availability" {
     type = string
-    default = "ZONAL"
+    default = "REGIONAL"
 }
 
 variable "tier" {
