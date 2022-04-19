@@ -86,7 +86,6 @@ pipeline {
                     --var 'project_id=astute-veld-344810' \
                     --var 'region=us-central1'\
                     --var 'cluster_name=terraform-test' \
-                    --var 'node_zones=us-central1-c' \
                     --var 'zone=us-central1-c' && terraform -chdir=gke-cluster apply --input=false --auto-approve tfplan '''
                     
                 } 
