@@ -21,20 +21,20 @@ variable "region" {
   type = string
 }
 
-# variable "zone" {
-#   type = string
-# }
+variable "zone" {
+  type = string
+}
 
 variable "cluster_name" {
   type = string
   description = "name of cluster to be created"
 }
 
-# variable "cluster_zone" {
-#   type = string
-#   default = "us-central1-c"
-#   description = "zone in which to create the cluster"
-# }
+variable "cluster_zone" {
+  type = string
+  default = "us-central1-c"
+  description = "zone in which to create the cluster"
+}
 
 variable "master_version" {
   type = string 
