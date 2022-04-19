@@ -6,7 +6,7 @@ resource "google_container_cluster" "terraform-test" {
   name = random_pet.service_account.keepers.cluster_name
 
   // location of the control plane. zonal clusters have 1 replica of the control plane in a single zone.
-  location = var.cluster_zone
+  # location = var.cluster_zone
 
   // to use external node pool, i create and delete the default
   // node pool as i cant create the cluster without the default node pool
