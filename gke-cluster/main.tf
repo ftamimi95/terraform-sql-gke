@@ -49,7 +49,7 @@ resource "google_container_node_pool" "default-pool" {
   cluster = random_pet.service_account.keepers.cluster_name
 
   // specify different zones within the same region as the control plane(ie zonal cluster)
-  node_locations = var.node_zones
+  # node_locations = var.node_zones
 
   node_config {
 
