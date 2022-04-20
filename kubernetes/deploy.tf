@@ -4,7 +4,7 @@
 // create a deployment
 resource "kubernetes_deployment" "test-project-depl" {
   metadata {
-    name = "flask-deployment-test"
+    name = "app-deployment-demo"
     namespace = kubernetes_namespace.dev.metadata[0].name
   }
 

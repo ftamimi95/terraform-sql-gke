@@ -52,7 +52,7 @@ pipeline {
                     sh 'terraform -chdir=db init'
                     sh '''terraform -chdir=db validate && terraform -chdir=db plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
-                    --var 'database_name=sql-db-test-7' \
+                    --var 'database_name=sql-db-test-6' \
                     --var 'region=us-central1'\
                     --var 'db_user=feras'\
                     --var 'db_pass=admin'\
@@ -114,7 +114,7 @@ pipeline {
                     sh 'terraform -chdir=kubernetes init'
                     sh '''terraform -chdir=kubernetes plan -out tfplan \
                     --var 'project_id=astute-veld-344810' \
-                    --var 'namespace=flask-test-final' \
+                    --var 'namespace=flask-test-demo' \
                     --var 'region=us-central1'\
                     --var 'deployment_replica=2' \
                     --var 'container_image=okteto/sample-app' \
