@@ -9,7 +9,7 @@ resource "google_compute_global_address" "flask_app_ip" {
 // service of type ClusterIP for the deployment
 resource "kubernetes_service" "flask-service" {
   metadata {
-    name = "flask-service-1"
+    name = "flask-service-2"
     namespace = kubernetes_namespace.dev.metadata[0].name
     annotations = {
       "cloud.google.com/neg" = "{\"ingress\": true}"

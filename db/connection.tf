@@ -8,7 +8,7 @@ data "google_compute_network" "default_vpc" {
 resource "google_compute_global_address" "peering_address" {
   provider = google-beta
 
-  name          = "default-vpc-sql-test-6"
+  name          = "default-vpc-postgres"
   purpose       = "VPC_PEERING"
   address_type  = "INTERNAL"
   project = var.project_id

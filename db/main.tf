@@ -4,7 +4,7 @@ resource "random_id" "sql_id" {
 
 // creates a zonal PostgreSQL cloud SQL instance
 resource "google_sql_database_instance" "primary" {
-  name = "pstgres-sql-test-2-${random_id.sql_id.hex}"
+  name = "postgres-sql-test-3-${random_id.sql_id.hex}"
   database_version = var.database_version
   region           = var.region
   deletion_protection = false
